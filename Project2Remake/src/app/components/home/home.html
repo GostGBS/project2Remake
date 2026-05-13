@@ -1,0 +1,82 @@
+<div class="container" id="homa">
+    <div class="hero-box">
+        <div class="hero-text">
+            <h1>Your Road Awaits.<br>Rent With Us.</h1>
+            <p class="fs-4 text-secondary">Discover our fleet of high-performance vehicles.</p>
+            <a routerLink="#renta" class="btn"
+                style="background: white; color: black; font-weight: bold; border-radius: 8px; padding: 12px 25px;">Rent
+                a Car</a>
+        </div>
+    </div>
+
+    <div id="carouselExampleRide" class="carousel slide p-2" data-bs-ride="carousel" style="background-color:#0a0a0a ;">
+        <div class="carousel-inner" style="display: flex;">
+            @for ( p of popularCars; track p) {
+                <div class="carousel-item active">
+                <img style="border-radius: 20px;" [src]="p.imageUrl1">
+            </div>
+            <div class="carousel-item active">
+                <img style="border-radius: 20px;" [src]="p.imageUrl2">
+            </div>
+            <div class="carousel-item active">
+                <img style="border-radius: 20px;" [src]="p.imageUrl3">
+            </div>
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="row mb-5" id="renta">
+        <div class="col-lg-3 mb-4">
+            <div class="filter-sidebar">
+                <h5 class="fw-bold mb-3">Brand Filter</h5>
+                <div class="form-check">
+                    <input class="form-check-input filter-btn" type="radio" name="brand" value="All" id="all" checked>
+                    <label class="form-check-label" for="all">All Brands</label>
+                </div>
+                <div id="brandFilters">
+                    
+                        <h5 class="fw-bold mb-3">Cities</h5>
+                        
+                <select id="cities" name="city" class="form-select">
+                    @for ( f of filters; track f) {
+                    <option selected disabled>Choose City</option>
+                    }
+                    </select>
+                    
+                </div>
+
+                
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-9">
+            <div class="row g-4" id="roww">
+                @for ( c of cars; track c) {
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img [src]="c.imageUrl1" class="card-img-top">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">{{c.brand}} {{c.model}}</h5>
+                            <div class="mt-auto">
+                                <a routerLink="/car/{{c.id}}" class="btn btn-primary">Rent Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+
+            <div id="pagination" class="d-flex justify-content-center mt-4"></div>
+        </div>
+    </div>
+</div>
