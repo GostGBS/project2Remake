@@ -1,0 +1,80 @@
+        :root {
+            --brand-red: #ff0000;
+            --dark-bg: #000;
+            --card-grad: linear-gradient(135deg, #111 0%, #000 100%);
+        }
+
+        body {
+            background-color: var(--dark-bg) !important;
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            padding-top: 90px;
+        }
+
+        .profile-sidebar {
+            background: var(--card-grad);
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 30px;
+            position: sticky;
+            top: 100px;
+        }
+
+        .profile-big-img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid var(--brand-red);
+            margin-bottom: 15px;
+        }
+
+        .section-title {
+            border-left: 4px solid var(--brand-red);
+            padding-left: 15px;
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mini-card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+            margin-bottom: 20px;
+            height: 100%;
+        }
+
+        .mini-card:hover {
+            border-color: var(--brand-red);
+        }
+
+        .mini-card img {
+            height: 120px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .mini-card-body {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #000 !important;
+            border-bottom: 1px solid #222;
+        }
+
+        .history-card {
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }

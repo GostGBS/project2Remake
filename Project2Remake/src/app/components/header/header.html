@@ -6,14 +6,14 @@
                 <a href="#renta" class="nav-link d-inline mx-2">Rent</a>
 
                 <div id="guest-links" class="d-inline">
-                    <a href="signup.html" class="nav-link d-inline mx-2">Sign up</a>
-                    <a href="loginn.html" class="nav-link d-inline mx-2">Login</a>
+                    <a routerLink="/signup" class="nav-link d-inline mx-2">Sign up</a>
+                    <a routerLink="/login" class="nav-link d-inline mx-2">Login</a>
                 </div>
 
                 <div id="user-links" class="d-none">
-                    <a href="#" class="nav-link d-inline mx-2 text-danger" onclick="handleLogout()">Log out</a>
-                    <a href="profile.html">
-                        <img onclick="onProfileClick()" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                    <a  class="nav-link d-inline mx-2 text-danger" (click)="handleLogout()">Log out</a>
+                    <a routerLink="/profile" class="nav-link d-inline mx-2">
+                        <img (click)="onProfileClick()" src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
                             alt="Profile" class="rounded-circle prof" width="35" height="35">
                     </a>
                 </div>

@@ -1,0 +1,18 @@
+
+
+    <div class="login-card">
+        <h1 class="brand-logo">vGT</h1>
+        <p class="subtitle">Welcome back to the fleet</p>
+
+        <form [formGroup]="loginForm" (ngSubmit)="handlelogin($event)" class="login-form">
+            <input type="tel" id="phone" placeholder="Phone Number" class="form-control" formControlName="PhoneNumber" required>
+            <input type="password" id="password" placeholder="Password" class="form-control" formControlName="password" required>
+
+            <button type="submit" class="btn btn-login w-100">Log In</button>
+        </form>
+
+        <div class="footer-link">
+            არ გაქვს ანგარიში? <a routerLink="signup">რეგისტრაცია</a>
+        </div>
+    </div>
+    

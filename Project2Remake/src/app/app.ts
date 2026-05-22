@@ -3,7 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { Header } from './components/header/header';
 import { Footer } from "./components/footer/footer";
-import { ChangeDetectorRef } from '@angular/core';
+
 
 @Component({
   selector: 'app-root',

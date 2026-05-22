@@ -1,0 +1,29 @@
+<div id="main-wrapper">
+        <div id="left-side">
+            <div class="signup-card">
+                <h1 class="brand-logo">vGT</h1>
+                <p class="subtitle">Join our exclusive rental network</p>
+                
+                <form [formGroup]="signupForm" (ngSubmit)="handlesignup($event)" class="signup-form">
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <input type="text" id="firstname" placeholder="First Name" class="form-control" formControlName="firstname" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" id="lastname" placeholder="Last Name" class="form-control" formControlName="lastname" required>
+                        </div>
+                    </div>
+                    <input type="email" id="email" placeholder="Email Address" class="form-control" formControlName="email" required>
+                    <input type="tel" id="phone" placeholder="Phone Number" class="form-control" formControlName="PhoneNumber" required>
+                    <input type="text" id="role" placeholder="Desired Role (e.g. Client)" class="form-control" formControlName="role" required>
+                    <input type="password" id="password" placeholder="Create Password" class="form-control" formControlName="password" required>
+                    
+                    <button type="submit" class="btn btn-signup w-100">Create Account</button>
+                </form>
+
+                <div class="card-footer">
+                    უკვე გაქვთ ანგარიში? <a routerLink="/login">ავტორიზაცია</a>
+                </div>
+            </div>
+        </div>
+    </div>

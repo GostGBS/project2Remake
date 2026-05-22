@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container" id="homa">
     <div class="hero-box">
         <div class="hero-text">
@@ -9,28 +10,61 @@
         </div>
     </div>
 
-    <div id="carouselExampleRide" class="carousel slide p-2" data-bs-ride="carousel" style="background-color:#0a0a0a ;">
-        <div class="carousel-inner" style="display: flex;">
-            @for ( p of popularCars; track p) {
-                <div class="carousel-item active">
-                <img style="border-radius: 20px;" [src]="p.imageUrl1">
-            </div>
+    <div id="carouselExampleRide" class="carousel slide p-2" data-bs-ride="carousel" style="background-color:#0a0a0a;"
+        data-bs-theme="light">
+        <div class="carousel-inner">
+            @for ( p of popularCars; track p; let i = $index) {
+            @if(i == 0) {
             <div class="carousel-item active">
-                <img style="border-radius: 20px;" [src]="p.imageUrl2">
+                <div class="row gx-3">
+                    @for ( p of popularCars; track p; let i = $index) {
+                    <div class="col-md-3">
+                        <div class="card">
+                            <button class="like-btn" onclick=";event.stopPropagation();">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                            <img [src]="p.imageUrl1">
+                            <div class="tga">
+                                <button class="btn btn-primary mt-2 rent-btn-cardd"
+                                    (click)="carService.PurchaseCar()">Rent Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
-            <div class="carousel-item active">
-                <img style="border-radius: 20px;" [src]="p.imageUrl3">
+            }@else {
+            <div class="carousel-item">
+                <div class="row ">
+                    @for ( p of popularCars; track p; let i = $index) {
+                    <div class="col-md-3">
+                        <div class="card">
+                            <button class="like-btn" onclick="; event.stopPropagation();">
+                                <i class="fa-regular fa-heart"></i>
+                            </button> ">
+                            <img [src]="p.imageUrl2">
+                            <div class="tga">
+                                <button class="btn btn-primary mt-2 rent-btn-cardd"
+                                    (click)="carService.PurchaseCar()">Rent Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
             </div>
             }
+            }
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleRide" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        <div class="custom-carousel carousel-control-prev g d-flex align-items-center"
+            data-bs-target="#carouselExampleRide" data-bs-slide="prev">
+            <div class="le prev">‹</div>
+        </div>
+
+        <div class="custom-carousel carousel-control-next t d-flex align-items-center"
+            data-bs-target="#carouselExampleRide" data-bs-slide="next">
+            <div class="le next">›</div>
+        </div>
+
     </div>
 
     <div class="row mb-5" id="renta">
@@ -42,33 +76,33 @@
                     <label class="form-check-label" for="all">All Brands</label>
                 </div>
                 <div id="brandFilters">
-                    
-                        <h5 class="fw-bold mb-3">Cities</h5>
-                        
-                <select id="cities" name="city" class="form-select">
-                    @for ( f of filters; track f) {
-                    <option selected disabled>Choose City</option>
-                    }
-                    </select>
-                    
+                    <h5 class="fw-bold mb-3">Cities</h5>
+                    <form #myForm="ngForm">
+                        <select id="cities" name="city" #city ngModel class="form-select"
+                            (change)="filter(myForm.value)">
+                            <option selected disabled>Choose City</option>
+                            @for ( f of filters; track f) {
+                            <option [value]="f">{{ f }}</option>
+                            }
+                        </select>
+                    </form>
                 </div>
-
-                
-
             </div>
-
         </div>
 
         <div class="col-lg-9">
             <div class="row g-4" id="roww">
                 @for ( c of cars; track c) {
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img [src]="c.imageUrl1" class="card-img-top">
+                    <div class="cardd h-100">
+                        <button class="like-btn" onclick="toggleLike(this, '${car.id}'); event.stopPropagation();">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <img [src]="c.imageUrl1" class="card-img-top cardd img">
                         <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{c.brand}} {{c.model}}</h5>
-                            <div class="mt-auto">
-                                <a routerLink="/car/{{c.id}}" class="btn btn-primary">Rent Now</a>
+                            <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <a (click)="carService.PurchaseCar()" class="btn btn-primary rent-btn-card">Rent Now</a>
                             </div>
                         </div>
                     </div>
@@ -80,3 +114,4 @@
         </div>
     </div>
 </div>
+<app-footer></app-footer>
