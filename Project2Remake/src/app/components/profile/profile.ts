@@ -13,6 +13,7 @@ import { ProfileeService } from "../../services/profilee.service";
 export class Profile implements OnInit {
 
   purchaseHistory: any[] = [];
+  FavCarts: any[] = [];
   constructor(private profileeService: ProfileeService, private cdr: ChangeDetectorRef) {}
 
   handleLogout(): void {
@@ -45,6 +46,12 @@ export class Profile implements OnInit {
       _this_.purchaseHistory = historyResponse;
       _this_.cdr.detectChanges();
     });
+  });
+
+  this.profileeService.FavCarts().subscribe((favResponse: any) => {
+    console.log(favResponse);
+    _this_.FavCarts = favResponse;
+    _this_.cdr.detectChanges();
   });
 
   }

@@ -17,8 +17,10 @@ export class ProfileeService {
     return this.http.get(`https://rentcar.stepprojects.ge/Purchase/${localStorage.getItem("Phone")}`);
   }
 
-  favCars() {
+  FavCarts() {
     return this.http.get(`https://rentcar.stepprojects.ge/api/Users/${localStorage.getItem("Phone")}/favorite-cars`)
   };
+
+  
   
 }

@@ -23,7 +23,15 @@ export class CarService {
     
   }
 
-  
+  likeCar(carId: any) {
+    const phone = localStorage.getItem("Phone");
+    return this.http.post(`https://rentcar.stepprojects.ge/api/Users/${phone}/favorites/${carId}`, {});  
 
+  
+  }
+
+  mainpage(carId: any) {
+    return this.http.get(`https://rentcar.stepprojects.ge/api/Car/${carId}`);
+  }
   
 }

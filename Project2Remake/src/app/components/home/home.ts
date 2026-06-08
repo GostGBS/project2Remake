@@ -5,11 +5,14 @@ import { FilterService } from '../../services/filter.service';
 import { FormsModule } from '@angular/forms';
 import { Header } from '../header/header';
 import { CommonModule } from '@angular/common';
-  import { Footer } from '../footer/footer';
+import { Footer } from '../footer/footer';
+
+
+
 
   @Component({
     selector: 'app-home',
-    imports: [RouterLink, FormsModule, Header, CommonModule, Footer],
+    imports: [RouterLink, FormsModule, Header, CommonModule, Footer  ],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -40,10 +43,18 @@ export class Home implements OnInit {
       _this.filters = response;
       _this.cdr.detectChanges();
     });
+  }
 
-    this.carService.PurchaseCar().subscribe(function(response: any) {
-      _this.cdr.detectChanges();
-      
+  PurchaseCar() {
+    this.carService.PurchaseCar().subscribe({
+      next: () => {
+        this.cdr.detectChanges();
+        alert("Car purchased successfully!");
+      },
+      error: (err: any) => {
+        console.error("Failed to purchase the car", err);
+        alert("Failed to purchase the car. Please try again.");
+      }
     });
   }
 
@@ -55,6 +66,30 @@ export class Home implements OnInit {
       _this.cdr.detectChanges();
     });
   };
+
+  togglelike(car : any) {
+    this.carService.likeCar(car.id).subscribe({
+      next: () => {
+        this.cdr.detectChanges();
+        alert(`You have ${car.isLiked ? 'liked' : 'liked'} the car: ${car.brand} ${car.model}`);
+      },
+      error: (err: any) => {
+        console.error("Failed to like the car you dumb ahh", err);
+      }
+    });
+  }
+
+  mainpage() {
+    const carId = localStorage.getItem("carId");
+    
+        localStorage.setItem("carId", carId ? carId : "0");
+        window.location.href = "/mainpage";
+      }
+      
+    }
   
 
-}
+
+
+
+

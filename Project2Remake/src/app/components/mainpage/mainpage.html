@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand text-danger fw-bold fs-3" routerLink="/home">vGT rent</a>
+            <div class="ms-auto">
+                <a routerLink="/profile">
+                    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                        alt="Profile" class="rounded-circle prof" width="35" height="35" style="margin-right: 20px;">
+                </a>
+                <a routerLink="/home" class="btn btn-outline-light btn-sm">Back to Fleet</a>
+            </div>
+        </div>
+    </nav>
+   
+    <div class="container detail-container">
+        <div class="row g-5">
+            <div class="col-lg-7">
+                <div class="main-img-container" id="mainImgContainer">
+                    @for (c of car; track c) {
+                    <img id="mainImage" src="{{ c.imageUrl1 }}" alt="Car Image" style="display: none;">
+                    }
+                </div>
+                <div class="thumb-group" id="thumbGroup">
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="info-card">
+                    @for ( c of car; track c) {
+                        <h1 id="carTitle" class="fw-bold mb-1">{{ c.brand }}</h1>
+                    <p id="carLocation" class="text-secondary mb-4"><i class="fa-solid fa-location-dot"></i> {{ c.city }}</p>
+
+                    <div class="price-tag mb-4"><span id="carPrice">{{ c.price }}</span> ₾ <small class="fs-6 text-white">/
+                            დღე</small></div>
+
+                    <div class="specs-list">
+                        <div class="spec-item"><span><i class="fa-solid fa-calendar"></i> წელი:</span> <strong
+                                id="carYear">{{ c.year }}</strong></div>
+                        <div class="spec-item"><span><i class="fa-solid fa-users"></i> ტევადობა:</span> <strong
+                                id="carCapacity">{{ c.capacity }}</strong></div>
+                        <div class="spec-item"><span><i class="fa-solid fa-gears"></i> გადაცემათა კოლოფი:</span> <strong
+                                id="carTrans">{{ c.transmission }}</strong></div>
+                        <div class="spec-item"><span><i class="fa-solid fa-gas-pump"></i> ავზი:</span> <strong
+                                id="carFuel">{{ c.fuelCapacity }}</strong></div>
+                        <div class="spec-item"><span><i class="fa-solid fa-phone"></i> მფლობელი:</span> <strong
+                                id="carOwner">{{ c.createdBy }}</strong></div>
+                    </div>
+                }
+                    
+
+                    <button class="btn-rent" id="rentBtn">RENT NOW</button>
+                </div>
+            </div>
+        </div>
+    </div>
